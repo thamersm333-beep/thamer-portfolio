@@ -15,26 +15,39 @@
     document.documentElement.classList.replace('no-js', 'js');
     window.__introFallback = setTimeout(function () {
       document.documentElement.classList.remove('is-loading');
-      document.documentElement.classList.add('hero-entered');
+      document.documentElement.classList.add('hero-entered', 'header-in');
       document.querySelector('.loader')?.remove();
-    }, 12000);
+    }, 14000);
   </script>
 </head>
 <body>
   <a class="skip-link" href="#home">تخطّي إلى المحتوى</a>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="scroll-progress" aria-hidden="true"><i></i><span></span></div>
+  <div class="paper-grain" aria-hidden="true"></div>
 
   <!-- LOADER -->
-  <div class="loader" role="status" aria-live="polite" aria-label="تحميل الموقع">
+  <div class="loader" role="status" aria-live="polite" aria-label="تحميل الموقع" data-loader>
+    <canvas class="loader-embers" aria-hidden="true" data-embers></canvas>
+    <div class="loader-veil" aria-hidden="true"></div>
     <div class="loader-panel">
-      <svg class="loader-mark" viewBox="0 0 120 120" aria-hidden="true">
-        <circle class="loader-ring" cx="60" cy="60" r="46" fill="none" stroke-width="1.5"/>
-        <path class="loader-stroke ta-t" d="M28 38 H92 M60 38 V88" fill="none" stroke-width="3.2" stroke-linecap="round"/>
-        <path class="loader-stroke ta-a" d="M78 88 V52 C78 44 84 40 92 40" fill="none" stroke-width="3.2" stroke-linecap="round"/>
+      <svg class="loader-mark" viewBox="0 0 140 140" aria-hidden="true">
+        <defs>
+          <linearGradient id="inkGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#cb3027"/>
+            <stop offset="55%" stop-color="#d9b47b"/>
+            <stop offset="100%" stop-color="#edece7"/>
+          </linearGradient>
+        </defs>
+        <circle class="loader-ring" cx="70" cy="70" r="54" fill="none" stroke-width="1.2"/>
+        <circle class="loader-ring soft" cx="70" cy="70" r="46" fill="none" stroke-width=".8"/>
+        <path class="loader-stroke ta-t" d="M32 42 H108 M70 42 V108" fill="none" stroke="url(#inkGold)" stroke-width="3.6" stroke-linecap="round"/>
+        <path class="loader-stroke ta-a" d="M92 108 V58 C92 48 100 42 112 42" fill="none" stroke="url(#inkGold)" stroke-width="3.6" stroke-linecap="round"/>
+        <circle class="loader-spark" cx="70" cy="42" r="2.2" fill="#cb3027"/>
       </svg>
       <p class="loader-name">ثامر آل عميس</p>
+      <p class="loader-sub">THAMER AL-OMAIR</p>
       <div class="loader-bar" aria-hidden="true"><span class="loader-fill"></span></div>
-      <p class="loader-pct"><span data-loader-pct>0</span>%</p>
+      <p class="loader-pct"><span data-loader-pct>0</span><small>%</small></p>
     </div>
   </div>
 
@@ -44,7 +57,7 @@
       <span class="brand-mark" aria-hidden="true">TA</span>
       <span class="brand-dot" aria-hidden="true"></span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" data-menu-toggle>
+    <button class="menu-toggle rim-orbit" type="button" aria-expanded="false" aria-controls="nav-overlay" data-menu-toggle>
       <span class="menu-toggle-label">القائمة</span>
       <span class="menu-toggle-lines" aria-hidden="true"><i></i><i></i></span>
     </button>
@@ -53,10 +66,10 @@
   <div class="nav-overlay" id="nav-overlay" hidden data-nav-overlay>
     <nav class="nav-panel" aria-label="التنقل الرئيسي">
       <ol class="nav-list">
-        <li><a href="#home" data-nav-link><span class="nav-num">01</span><span class="nav-title">البداية</span></a></li>
-        <li><a href="#projects" data-nav-link><span class="nav-num">02</span><span class="nav-title">أعمالي</span></a></li>
-        <li><a href="#craft" data-nav-link><span class="nav-num">03</span><span class="nav-title">كيف أبني</span></a></li>
-        <li><a href="#contact" data-nav-link><span class="nav-num">04</span><span class="nav-title">تواصل</span></a></li>
+        <li style="--i:0"><a href="#home" data-nav-link><span class="nav-num">01</span><span class="nav-title">البداية</span></a></li>
+        <li style="--i:1"><a href="#projects" data-nav-link><span class="nav-num">02</span><span class="nav-title">أعمالي</span></a></li>
+        <li style="--i:2"><a href="#craft" data-nav-link><span class="nav-num">03</span><span class="nav-title">كيف أبني</span></a></li>
+        <li style="--i:3"><a href="#contact" data-nav-link><span class="nav-num">04</span><span class="nav-title">تواصل</span></a></li>
       </ol>
       <p class="nav-footnote">صانع أنظمة رقمية تحرّك المدارس والأعمال</p>
     </nav>
@@ -66,28 +79,32 @@
     <!-- HERO -->
     <section class="hero" id="home" data-section="home">
       <div class="hero-stage">
-        <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-backdrop" data-parallax-panel aria-hidden="true">
           <div class="hero-dots"></div>
+          <div class="hero-rim"></div>
           <span class="corner corner-tl"></span>
           <span class="corner corner-br"></span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-word word-thamer" data-parallax="0.18">
-            <span class="hero-letter" data-letter="T">T</span>
-            <span class="hero-letter" data-letter="H">H</span>
-            <span class="hero-letter" data-letter="A">A</span>
-            <span class="hero-letter" data-letter="M">M</span>
-            <span class="hero-letter" data-letter="E">E</span>
-            <span class="hero-letter" data-letter="R">R</span>
+          <span class="hero-word word-thamer" data-parallax="0.22">
+            <span class="hero-letter" style="--li:0" data-letter="T">T</span>
+            <span class="hero-letter" style="--li:1" data-letter="H">H</span>
+            <span class="hero-letter" style="--li:2" data-letter="A">A</span>
+            <span class="hero-letter" style="--li:3" data-letter="M">M</span>
+            <span class="hero-letter" style="--li:4" data-letter="E">E</span>
+            <span class="hero-letter" style="--li:5" data-letter="R">R</span>
           </span>
-          <span class="hero-word word-omaie" data-parallax="-0.12">آل عميس</span>
+          <span class="hero-word word-omaie" data-parallax="-0.16" aria-label="آل عميس">
+            <span class="ar-chunk" style="--li:0">آل</span>
+            <span class="ar-chunk" style="--li:1">عميس</span>
+          </span>
         </h1>
 
-        <div class="hero-copy" data-parallax="0.08">
+        <div class="hero-copy" data-parallax="0.1">
           <p class="hero-kicker">Saudi Product Builder</p>
           <p class="hero-tagline">أبني أنظمة رقمية تحرّك المدارس والأعمال — SaaS، تشغيل مدرسي، وتجارب سينمائية.</p>
-          <a class="hero-cta" href="#projects">
+          <a class="hero-cta rim-orbit" href="#projects">
             <span>استكشف أعمالي</span>
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v14M5 13l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -95,14 +112,17 @@
 
         <div class="hero-meta" aria-hidden="true">
           <span>Portfolio / 2026</span>
-          <span class="hero-scroll-hint">مرّر للأسفل</span>
+          <span class="hero-scroll-hint" data-scroll-cue>
+            <span class="cue-line"></span>
+            <span>مرّر للأسفل</span>
+          </span>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section class="projects" id="projects" data-section="projects">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="section-kicker">02 — أعمالي</p>
         <h2 class="section-title">ثماني منصات.<br><em>من الفكرة إلى التشغيل.</em></h2>
         <p class="section-lead">منصات مدرسية، رادار ميداني، ولاء رقمي، ورصد صوتي — كلها مبنية بروح المنتج لا العرض.</p>
@@ -111,76 +131,92 @@
       <div class="scatter-stage" data-scatter-stage>
         <div class="scatter-pin">
           <div class="scatter-field" data-scatter-field>
-            <!-- logos injected / positioned by JS; also present in DOM for no-js -->
-            <button class="scatter-orb" type="button" data-project="wajibati" style="--ox:-28%;--oy:-22%;--or: -8deg;">
+            <button class="scatter-orb" type="button" data-project="wajibati" style="--ox:-32%;--oy:-26%;--or:-12deg;--oz:1.05;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/wajibati.jpg" alt="شعار واجباتي" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="asir" style="--ox:22%;--oy:-28%;--or: 6deg;">
+            <button class="scatter-orb" type="button" data-project="asir" style="--ox:26%;--oy:-30%;--or:9deg;--oz:.98;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/asir-radar.jpg" alt="شعار رادار عسير" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="shaheen" style="--ox:-38%;--oy:8%;--or: 12deg;">
+            <button class="scatter-orb" type="button" data-project="shaheen" style="--ox:-44%;--oy:6%;--or:16deg;--oz:1.08;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/shaheen.jpg" alt="شعار شاهين" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="atharak" style="--ox:34%;--oy:4%;--or: -14deg;">
+            <button class="scatter-orb" type="button" data-project="atharak" style="--ox:40%;--oy:2%;--or:-18deg;--oz:.95;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/atharak.jpg" alt="شعار أعذارك" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="masar" style="--ox:-18%;--oy:30%;--or: 4deg;">
+            <button class="scatter-orb" type="button" data-project="masar" style="--ox:-20%;--oy:34%;--or:7deg;--oz:1.02;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/masar.jpg" alt="شعار مسار" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="atamm" style="--ox:18%;--oy:32%;--or: -6deg;">
+            <button class="scatter-orb" type="button" data-project="atamm" style="--ox:22%;--oy:36%;--or:-8deg;--oz:1;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/atamm.jpg" alt="شعار أتمّ" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="wafee" style="--ox:-42%;--oy:-8%;--or: 18deg;">
+            <button class="scatter-orb" type="button" data-project="wafee" style="--ox:-48%;--oy:-6%;--or:22deg;--oz:.92;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/wafee.jpg" alt="شعار وفي" loading="lazy">
             </button>
-            <button class="scatter-orb" type="button" data-project="tawasul" style="--ox:42%;--oy:-12%;--or: -10deg;">
+            <button class="scatter-orb" type="button" data-project="tawasul" style="--ox:48%;--oy:-14%;--or:-14deg;--oz:1.06;">
+              <span class="orb-glow" aria-hidden="true"></span>
               <img src="./assets/logos/tawasul.jpg" alt="شعار تواصل" loading="lazy">
             </button>
             <div class="scatter-core" aria-hidden="true">
-              <span>TA</span>
+              <span class="core-ring"></span>
+              <span class="core-mark">TA</span>
               <p>اضغط أي شعار</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="project-rail" data-project-rail>
-        <!-- cards for mobile / fallback list -->
+      <!-- Shong-style mask transition into craft -->
+      <div class="mask-transition" data-mask-transition aria-hidden="true">
+        <div class="mask-pin">
+          <div class="mask-logo">TA</div>
+        </div>
       </div>
     </section>
 
     <!-- CRAFT -->
     <section class="craft" id="craft" data-section="craft">
+      <div class="craft-ambient" aria-hidden="true">
+        <span class="amb amb-a"></span>
+        <span class="amb amb-b"></span>
+        <span class="amb amb-c"></span>
+      </div>
       <div class="craft-mask" aria-hidden="true">
         <span class="craft-giant">TA</span>
       </div>
-      <div class="craft-inner">
+      <div class="craft-inner" data-reveal>
         <p class="section-kicker light">03 — كيف أبني</p>
         <h2 class="section-title light">حرفة المنتج.<br>سرعة التنفيذ.<br><em>تفاصيل تُحسَّس.</em></h2>
         <p class="craft-copy">أبني منصات SaaS حقيقية قابلة للتوسع: واجهات عربية فخمة، قواعد سحابية محصّنة، وحركات تخدم المعنى لا الزينة.</p>
         <ul class="craft-stack">
-          <li>React</li>
-          <li>Tailwind</li>
-          <li>Framer Motion</li>
-          <li>Supabase</li>
-          <li>Firebase</li>
-          <li>AI Tools</li>
-          <li>Lovable</li>
-          <li>RTL UX</li>
+          <li style="--i:0">React</li>
+          <li style="--i:1">Tailwind</li>
+          <li style="--i:2">Framer Motion</li>
+          <li style="--i:3">Supabase</li>
+          <li style="--i:4">Firebase</li>
+          <li style="--i:5">AI Tools</li>
+          <li style="--i:6">Lovable</li>
+          <li style="--i:7">RTL UX</li>
         </ul>
       </div>
     </section>
 
     <!-- CONTACT -->
     <footer class="contact" id="contact" data-section="contact">
-      <div class="contact-inner">
+      <div class="contact-inner" data-reveal>
         <p class="section-kicker">04 — تواصل</p>
         <h2 class="contact-title">خلّنا نبني<br>الشيء الجاي.</h2>
-        <a class="contact-mail" href="mailto:hello@thamer.sa">hello@thamer.sa</a>
+        <a class="contact-mail rim-orbit" href="mailto:hello@thamer.sa">hello@thamer.sa</a>
         <ul class="socials">
-          <li><a href="#" aria-label="X / Twitter">X</a></li>
-          <li><a href="#" aria-label="GitHub">GitHub</a></li>
-          <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+          <li><a class="rim-orbit" href="#" aria-label="X / Twitter">X</a></li>
+          <li><a class="rim-orbit" href="#" aria-label="GitHub">GitHub</a></li>
+          <li><a class="rim-orbit" href="#" aria-label="LinkedIn">LinkedIn</a></li>
         </ul>
         <p class="copyright">© 2026 ثامر آل عميس · Thamer Al-Omair</p>
       </div>
@@ -190,18 +226,19 @@
   <!-- PROJECT OVERLAY -->
   <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
     <div class="dialog-sheet">
-      <button class="dialog-close" type="button" data-dialog-close aria-label="إغلاق">
+      <button class="dialog-close rim-orbit" type="button" data-dialog-close aria-label="إغلاق">
         <span aria-hidden="true">×</span>
       </button>
       <div class="dialog-media">
-        <img data-dialog-logo alt="" width="160" height="160">
+        <img data-dialog-logo alt="" width="180" height="180">
+        <span class="dialog-year" data-dialog-year></span>
       </div>
       <div class="dialog-body">
         <p class="dialog-en" data-dialog-en></p>
         <h3 id="project-dialog-title" data-dialog-title></h3>
         <p class="dialog-desc" data-dialog-desc></p>
         <ul class="dialog-tags" data-dialog-tags></ul>
-        <a class="dialog-link" data-dialog-link target="_blank" rel="noopener noreferrer">زيارة المنصة</a>
+        <a class="dialog-link rim-orbit" data-dialog-link target="_blank" rel="noopener noreferrer">زيارة المنصة</a>
       </div>
     </div>
   </dialog>
@@ -209,7 +246,8 @@
   <!-- CUSTOM CURSOR -->
   <div class="cursor" aria-hidden="true" data-cursor>
     <div class="cursor-ring"></div>
-    <div class="cursor-trail"></div>
+    <div class="cursor-ribbon" data-ribbon></div>
+    <div class="cursor-dot"></div>
   </div>
 
   <script type="module" src="./js/main.js"></script>
